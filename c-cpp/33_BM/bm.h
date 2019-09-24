@@ -25,10 +25,10 @@ public:
     }
     int bm(char* a, int n, char* b, int m) {
         std::vector<char> bc(SIZE, -1);
-        gernerateBC(b, m, bc);
+        generateBC(b, m, bc);
         std::vector<int> suffix(m, -1);
         std::vector<bool> prefix(m, false);
-        gerneratrGS(b, m, suffix, prefix);
+        generatrGS(b, m, suffix, prefix);
         int i = 0;
         while (i < n - m + 1) {
             int j;
@@ -50,14 +50,14 @@ public:
     }
 
 private:
-    void gernerateBC(char* b, int m, std::vector<char>& bc) {
+    void generateBC(char* b, int m, std::vector<char>& bc) {
         for (int i = 0; i < m; ++i) {
             int ascii = (int)b[i];
             bc[ascii] = i;
         }
     }
 
-    void gerneratrGS(char* b, int m, std::vector<int>& suffix, std::vector<bool>& prefix) {
+    void generatrGS(char* b, int m, std::vector<int>& suffix, std::vector<bool>& prefix) {
         for (int i = 0; i < m-1; ++i) {
             int j = i;
             int k = 0;
