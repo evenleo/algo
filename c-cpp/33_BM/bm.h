@@ -7,10 +7,6 @@
 class BM {
 private: 
     BM() {}
-private:
-    const static int SIZE = 256; 
-    static BM* _instance;
-    static std::mutex tx;
 
 public:
     static BM* instance() {
@@ -21,7 +17,6 @@ public:
         std::lock_guard<std::mutex> lk(tx);
         _instance = new BM;
         return _instance;
-
     }
     int bm(char* a, int n, char* b, int m) {
         std::vector<char> bc(SIZE, -1);
@@ -82,6 +77,11 @@ private:
     int max(int a, int b) {
         return a > b ? a : b;
     }
+
+private:
+    const static int SIZE = 256; 
+    static BM* _instance;
+    static std::mutex tx;
 };
 
 BM* BM::_instance = nullptr;
